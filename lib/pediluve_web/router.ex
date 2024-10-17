@@ -8,6 +8,8 @@ defmodule PediluveWeb.Router do
     plug :put_root_layout, html: {PediluveWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug PediluveWeb.Plugs.Locale, "en"
+    # /?locale=fr to change it
   end
 
   pipeline :api do
@@ -18,7 +20,18 @@ defmodule PediluveWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/users", UserController, :index
+    get "/users/create", UserController, :create
+    get "/users/:info", UserController, :show
+
+    resources "/users", UserController
+
   end
+
+  resources "/users", UserController do
+    resources "/posts", PostController
+  end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", PediluveWeb do
