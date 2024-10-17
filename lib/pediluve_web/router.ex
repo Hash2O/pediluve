@@ -28,9 +28,9 @@ defmodule PediluveWeb.Router do
 
   end
 
-  resources "/users", UserController do
-    resources "/posts", PostController
-  end
+  # resources "/users", UserController do
+  #   resources "/posts", PostController
+  # end
 
 
   # Other scopes may use custom stacks.

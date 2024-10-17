@@ -4,6 +4,10 @@ defmodule PediluveWeb.UserController do
   # here, the plug will only be executed for the index action.
   plug PediluveWeb.Plugs.Locale, "fr" when action in [:index]
 
+  # def init(conn, _params) do
+  #   render(conn, :init)
+  # end
+
   def index(conn, _params) do
     render(conn, :index)
   end
